@@ -1,9 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-import ProduceList from './ProduceList.js';
+// import ProduceList from './ProduceList.js';
 import Header from './Header.js';
-import MarketList from './MarketList.js';
+// import MarketList from './MarketList.js';
+import FarmersController from './FarmersController.js';
 
 function App(){
   return (
@@ -12,12 +13,13 @@ function App(){
       <div class="container">
         <div class="row">
           <div class="col-3">
-            <div class="row">
+            <FarmersController/>
+            {/* <div class="row">
               <MarketList />
             </div>
             <div class="row">
               <ProduceList />
-            </div>
+            </div> */}
             </div>
         </div>
       </div>
