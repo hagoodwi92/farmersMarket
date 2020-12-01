@@ -14,7 +14,7 @@ class FarmersController extends React.Component {
       // marketVisibleOnPage: true,
       // produceVisibleOnPage: false
     };
-  }
+  } 
 
   handleMarketClick = () => {
     // this.setState({ marketVisibleOnPage: true, produceVisibleOnPage: false})
