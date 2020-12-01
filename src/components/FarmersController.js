@@ -3,27 +3,40 @@ import React from 'react';
 // import { SeasonList } from './SeasonList';
 import ProduceList from './ProduceList.js';
 import MarketList from './MarketList.js';
+import { connect } from 'react-redux';
+import PropTypes from "prop-types";
 
-class FarmersControl extends React.Component {
+class FarmersController extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props);
     this.state = {
-      marketVisibleOnPage: true,
-      produceVisibleOnPage: false
+      // marketVisibleOnPage: true,
+      // produceVisibleOnPage: false
     };
   }
 
   handleMarketClick = () => {
-    this.setState({ marketVisibleOnPage: true, produceVisibleOnPage: false})
+    // this.setState({ marketVisibleOnPage: true, produceVisibleOnPage: false})
+    const { dispatch } = this.props;
+    const action = {
+      type: 'TOGGLE_MARKET'
+    }
+    dispatch(action);
   }
 
   handleProduceClick = () => {
-    this.setState({ marketVisibleOnPage: false, produceVisibleOnPage: true})
+    // this.setState({ marketVisibleOnPage: false, produceVisibleOnPage: true})
+    const { dispatch } = this.props;
+    const action = {
+      type: 'TOGGLE_PRODUCE'
+    }
+    dispatch(action);
   }
 
   render() {
     let currentVisibleState = null;
-    if (this.state.produceVisibleOnPage){
+    if (this.props.produceVisibleOnPage){
       currentVisibleState = <ProduceList />;
     } else {
       currentVisibleState = <MarketList />;
@@ -41,4 +54,19 @@ class FarmersControl extends React.Component {
 
 }
 
-export default FarmersControl;
+FarmersController.propTypes = {
+  marketVisibleOnPage: PropTypes.bool,
+  produceVisibleOnPage: PropTypes.bool
+};
+
+const mapStateToProps = state => {
+  return {
+    marketVisibleOnPage: state.marketVisibleOnPage,
+    produceVisibleOnPage: state.produceVisibleOnPage
+  }
+}
+
+
+FarmersController = connect(mapStateToProps)(FarmersController);
+
+export default FarmersController;
